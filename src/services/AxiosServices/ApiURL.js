@@ -2,5 +2,7 @@ export const USERS_URLS = {
   signup: 'signup',
   signIn: 'signin',
   verifyOtp:'/verifyMailCode',
-  resendMailCode:'/resendMailCode'
+  resendMailCode:'/resendMailCode',
+  QuestionaryApi:'user/addDailyCheckIn',
+  fetchAppointment: 'user/fetchUpcomingAppointment',
 };
