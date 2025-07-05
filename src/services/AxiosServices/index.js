@@ -17,11 +17,10 @@ export const privateInstance = axios?.create({
 });
 
 privateInstance.interceptors.request.use(async req => {
-  const token = await getAsyncItem('jwt');
   const temp_jwt = await getAsyncItem('temp_jwt');
   
-  let accessToken = temp_jwt  ;
-// console.log(accessToken,'======')
+  const accessToken = temp_jwt  ;
+
   if (accessToken) {
     req.headers.Authorization = `Bearer ${accessToken}`;
   }
@@ -29,10 +28,5 @@ privateInstance.interceptors.request.use(async req => {
  
   return req;
 });
-
-  // privateInstance.interceptors.response.use(response => {
-  //   console.log(response,'-------------->>>')
-  //   return response;
-  // });
 
 export const privateAPI = privateInstance;

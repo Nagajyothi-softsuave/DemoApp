@@ -23,15 +23,16 @@ const OtpScreen = () => {
 
   const handleSubmit = () => {
     if (otp.length === 4) {
-      Alert.alert('OTP Submitted', `Entered OTP: ${otp}`);
+      // Alert.alert('OTP Submitted', `Entered OTP: ${otp}`);
       const otpString = String(otp);
-      console.log('[[[[[[[[[[[[[[[[[[[[[[[[');
-      Verify.verifyOtp({ pinCode: otp }, res => {
+      console.log('[[[[[[[[[[[[[[[[[[[[[[[[',otp);
+      Verify.verifyOtp({pincode:otp }, res => {
         console.log(res, '-----------');
         navigation.navigate('Home');
       });
        
     } else {
+      
       Alert.alert('Invalid OTP', 'Please enter a 4-digit OTP');
     }
   };

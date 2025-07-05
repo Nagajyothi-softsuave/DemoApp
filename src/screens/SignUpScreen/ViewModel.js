@@ -78,7 +78,7 @@ const SignUpScreenViewModel = () => {
       deviceType: Platform.OS,
       userType: 'User',
     };
-    navigation.navigate(SCREEN_NAMES.HOME);
+    navigation.navigate('OtpScreen');
 
     UserAPI?.signUp(params, async res => {
       console.log('token', res?.data?.token);

@@ -7,7 +7,6 @@ import {
   Text,
 } from 'react-native';
 import RootNavigator from './src/navigation/RootNavigator';
-import Router from './src/navigation';
 import { Provider } from 'react-redux';
 import { store } from './src/appConfig/Redux';
 function App() {

@@ -38,7 +38,7 @@ export default function Home() {
       </ScrollView>
 
       <View style={styles.bottomContainer}>
-        <CustomButton label="Submit Answer" />
+        <CustomButton label="Submit Answer" onPress={()=>{}}/>
       </View>
     </KeyboardAvoidingView>
   );

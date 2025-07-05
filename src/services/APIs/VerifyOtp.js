@@ -1,40 +1,26 @@
-
 import { Alert } from 'react-native';
-import { DEFAULT_ENV } from '../AxiosServices/Environment';
-import { getAsyncItem } from '../../utils';
+import { USERS_URLS } from '../AxiosServices/ApiURL';
+import { AxiosServiceMethods } from '../AxiosServices/AxiosMethods';
+import { REQUEST_TYPE } from '../AxiosServices/REQUEST_TYPES';
 
 const Verify = {
-  verifyOtp: async (params = {}, successCallback = () => {}) => {
-    try {
-     
-      const baseUrl = DEFAULT_ENV?.BASE_URL;
-      const temp_jwt = await getAsyncItem('temp_jwt');
-      const url = `${baseUrl}/verifyOtp`;
-
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${temp_jwt}`,
-        },
-        body: JSON.stringify(params),
-      });
-     
-      const data = await response.json();
-     
-
-      if (response.ok) {
-        successCallback(data);
-      } else {
-        console.log('Server error:', data);
-        Alert.alert(data?.message || 'Something went wrong');
-      }
-    } catch (err) {
-      
-      console.log('Fetch error:', err);
-      Alert.alert('Network error', 'Failed to verify OTP');
-    }
+  verifyOtp: (params = {}, successCallback = () => {}) => {
+    AxiosServiceMethods(
+      true,
+      USERS_URLS?.verifyOtp,
+      REQUEST_TYPE.POST,
+      params,
+      successCallback,
+      err => {
+        console.log('Error in Axios:', err);
+        if (err.response) {
+          Alert.alert(err.response.data?.message);
+        } else {  
+          console.log
+          apiErrorAlert('---------', err);
+        }
+      },
+    );
   },
 };
-
 export default Verify;
